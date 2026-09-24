@@ -5,25 +5,14 @@
 # =====================================================================
 
 # ---------------------------------------------------------------------
-# 1. Acesso com senha (somente teste)
-#    AuthUserFile precisa do CAMINHO ABSOLUTO do .htpasswd no servidor.
-#    No cPanel/Hostinger o caminho aparece no Gerenciador de Arquivos,
-#    ex.: /home/SEU_USUARIO/public_html/teste/.htpasswd
-# ---------------------------------------------------------------------
-AuthType Basic
-AuthName "Prime Depot - ambiente de teste"
-AuthUserFile /home/SEU_USUARIO/public_html/.htpasswd
-Require valid-user
-
-# ---------------------------------------------------------------------
-# 2. Nada deste ambiente entra no Google
+# 1. Nada deste ambiente entra no Google (acesso livre para quem tem o link)
 # ---------------------------------------------------------------------
 <IfModule mod_headers.c>
   Header always set X-Robots-Tag "noindex, nofollow, noarchive"
 </IfModule>
 
 # ---------------------------------------------------------------------
-# 3. Básico
+# 2. Básico
 # ---------------------------------------------------------------------
 Options -Indexes -MultiViews
 DirectoryIndex index.html
@@ -32,7 +21,7 @@ ErrorDocument 404 /404.html
 # Se o site ficar numa subpasta (ex.: /teste/), troque para: ErrorDocument 404 /teste/404.html
 
 # ---------------------------------------------------------------------
-# 4. HTTPS e URLs limpas
+# 3. HTTPS e URLs limpas
 # ---------------------------------------------------------------------
 <IfModule mod_rewrite.c>
   RewriteEngine On
@@ -52,7 +41,7 @@ ErrorDocument 404 /404.html
 </FilesMatch>
 
 # ---------------------------------------------------------------------
-# 5. Segurança
+# 4. Segurança
 # ---------------------------------------------------------------------
 <IfModule mod_headers.c>
   Header always set X-Content-Type-Options "nosniff"
@@ -66,7 +55,7 @@ ErrorDocument 404 /404.html
 ServerSignature Off
 
 # ---------------------------------------------------------------------
-# 6. Tipos de arquivo
+# 5. Tipos de arquivo
 # ---------------------------------------------------------------------
 <IfModule mod_mime.c>
   AddType image/webp                   .webp
@@ -77,7 +66,7 @@ ServerSignature Off
 </IfModule>
 
 # ---------------------------------------------------------------------
-# 7. Compressão
+# 6. Compressão
 # ---------------------------------------------------------------------
 <IfModule mod_brotli.c>
   AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml application/javascript application/json application/manifest+json image/svg+xml
@@ -87,7 +76,7 @@ ServerSignature Off
 </IfModule>
 
 # ---------------------------------------------------------------------
-# 8. Cache
+# 7. Cache
 #    Teste: HTML sem cache e CSS/JS com cache curto,
 #    para o cliente sempre ver a última versão após cada ajuste.
 # ---------------------------------------------------------------------
