@@ -1,4 +1,4 @@
-# Prime Depot · primedepotglobal.com
+# Prime Depot
 
 Site da Prime Depot Global Enterprises LLC: importadora direta de PVC celular (trim boards e sheets) em Hyde Park, MA.
 
