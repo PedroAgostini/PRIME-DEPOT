@@ -1,0 +1,98 @@
+# =====================================================================
+#  Prime Depot · primedepotglobal.com
+#  .htaccess de PRODUÇÃO (Apache 2.4)
+#  Sem senha e liberado para o Google. Cache longo para imagens e fontes.
+# =====================================================================
+
+# ---------------------------------------------------------------------
+# 1. Básico
+# ---------------------------------------------------------------------
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+AddDefaultCharset utf-8
+ErrorDocument 404 /404.html
+
+# ---------------------------------------------------------------------
+# 2. HTTPS e URLs limpas
+# ---------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Força HTTPS
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Opcional: www -> sem www (o canonical do site usa https://primedepotglobal.com/)
+  # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  # RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+  # Pastas de projeto que não devem ser servidas
+  RewriteRule (^|/)(\.impeccable|_deploy|node_modules)(/|$) - [F,L]
+</IfModule>
+
+# Bloqueia arquivos internos (docs do projeto, senhas, configs)
+<FilesMatch "(^\.|\.(md|log|bak|sql|ini|sh|mjs|psd|ai)$|^(PRODUCT|DESIGN|Briefing))">
+  Require all denied
+</FilesMatch>
+
+# ---------------------------------------------------------------------
+# 3. Segurança
+# ---------------------------------------------------------------------
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https:; form-action 'self' mailto:; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+  Header unset X-Powered-By
+</IfModule>
+ServerSignature Off
+
+# ---------------------------------------------------------------------
+# 4. Tipos de arquivo
+# ---------------------------------------------------------------------
+<IfModule mod_mime.c>
+  AddType image/webp                   .webp
+  AddType font/woff2                   .woff2
+  AddType application/manifest+json    .webmanifest
+  AddType image/x-icon                 .ico
+  AddCharset utf-8 .html .css .js .txt .xml .json .webmanifest
+</IfModule>
+
+# ---------------------------------------------------------------------
+# 5. Compressão
+# ---------------------------------------------------------------------
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml application/javascript application/json application/manifest+json image/svg+xml
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json application/manifest+json image/svg+xml
+</IfModule>
+
+# ---------------------------------------------------------------------
+# 6. Cache
+#    Produção: HTML sempre revalidado; CSS/JS 7 dias; imagens 6 meses; fontes 1 ano.
+# ---------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault                         "access plus 1 hour"
+  ExpiresByType text/html                "access plus 0 seconds"
+  ExpiresByType text/css                 "access plus 7 days"
+  ExpiresByType application/javascript   "access plus 7 days"
+  ExpiresByType image/webp               "access plus 6 months"
+  ExpiresByType image/jpeg               "access plus 6 months"
+  ExpiresByType image/png                "access plus 6 months"
+  ExpiresByType image/x-icon             "access plus 6 months"
+  ExpiresByType font/woff2               "access plus 1 year"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.woff2$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>

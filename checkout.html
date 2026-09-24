@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout | Prime Depot</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f4f5f8">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="icon" href="assets/icons/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="preload" href="assets/fonts/bigshoulders-display-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="checkout.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="co-page">
+  <header class="co-header">
+    <div class="wrap co-header-inner">
+      <a class="brand" href="index.html" aria-label="Prime Depot, home"><img src="assets/logo/logo-color.webp" alt="Prime Depot Building Materials" width="846" height="746"></a>
+      <span class="co-secure"><svg aria-hidden="true" viewBox="0 0 256 256"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"/></svg> Secure checkout</span>
+      <div class="co-header-actions">
+        <a class="header-phone" href="tel:+16173808387"><svg aria-hidden="true" viewBox="0 0 256 256"><path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z"/></svg>(617) 380-8387</a>
+        <a class="co-back" href="index.html#products">Back to Catalog</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap co-main" id="main">
+    <h1 class="co-title">Checkout</h1>
+
+    <!-- Empty cart -->
+    <section class="co-empty" data-co-empty hidden>
+      <h2>Your list is empty.</h2>
+      <p>Pick sizes and quantities in the catalog, then come back here to place your order.</p>
+      <a class="btn btn-orange btn-lg" href="index.html#products">Browse Sizes</a>
+    </section>
+
+    <div class="co-grid" data-co-grid>
+      <form class="co-form" data-co-form novalidate data-endpoint="" data-mailto="contact@primedepotglobal.com">
+        <!-- 1. Contact -->
+        <fieldset class="co-step">
+          <legend><span class="co-num">1</span>Contact</legend>
+          <div class="co-fields">
+            <div class="field"><label for="c-name">Full name</label><input id="c-name" name="name" autocomplete="name" required><p class="err" id="c-name-err">Enter your name.</p></div>
+            <div class="field"><label for="c-company">Company <span class="opt">optional</span></label><input id="c-company" name="company" autocomplete="organization"></div>
+            <div class="field"><label for="c-phone">Phone</label><input id="c-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(617) 555-0123" required><p class="err" id="c-phone-err">Enter a 10-digit phone number, like (617) 555-0123.</p></div>
+            <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" autocomplete="email" required><p class="err" id="c-email-err">Enter a valid email for your order confirmation.</p></div>
+          </div>
+        </fieldset>
+
+        <!-- 2. Delivery -->
+        <fieldset class="co-step">
+          <legend><span class="co-num">2</span>Delivery</legend>
+          <p class="co-hint"><svg aria-hidden="true" viewBox="0 0 256 256"><path d="M255.42,117l-14-35A15.93,15.93,0,0,0,226.58,72H192V64a8,8,0,0,0-8-8H32A16,16,0,0,0,16,72V184a16,16,0,0,0,16,16H49a32,32,0,0,0,62,0h50a32,32,0,0,0,62,0h17a16,16,0,0,0,16-16V120A7.94,7.94,0,0,0,255.42,117ZM192,88h34.58l9.6,24H192ZM32,72H176v64H32ZM80,208a16,16,0,1,1,16-16A16,16,0,0,1,80,208Zm81-24H111a32,32,0,0,0-62,0H32V152H176v12.31A32.11,32.11,0,0,0,161,184Zm31,24a16,16,0,1,1,16-16A16,16,0,0,1,192,208Zm48-24H223a32.06,32.06,0,0,0-31-24V128h48Z"/></svg> We deliver straight to your job site or lumber yard across Massachusetts.</p>
+          <div class="co-fields">
+            <div class="field field-wide"><label for="c-street">Job site address</label><input id="c-street" name="street" autocomplete="street-address" required><p class="err" id="c-street-err">Enter the delivery address.</p></div>
+            <div class="field"><label for="c-city">City</label><input id="c-city" name="city" autocomplete="address-level2" required><p class="err" id="c-city-err">Enter the city.</p></div>
+            <div class="field"><label for="c-zip">ZIP</label><input id="c-zip" name="zip" autocomplete="postal-code" inputmode="numeric" maxlength="10" placeholder="02136" required><p class="err" id="c-zip-err">Enter a 5-digit ZIP code, like 02136.</p></div>
+            <div class="field"><label for="c-date">Preferred delivery date <span class="opt">optional</span></label><input id="c-date" name="date" type="date"></div>
+            <div class="field"><label for="c-role">I am a</label>
+              <select id="c-role" name="role"><option>Contractor / builder</option><option>Remodeler / siding specialist</option><option>Lumber yard</option><option>Homeowner</option></select>
+            </div>
+            <div class="field field-wide"><label for="c-notes">Delivery notes <span class="opt">optional</span></label><textarea id="c-notes" name="notes" rows="3" placeholder="Gate code, where to drop the material, cut list details"></textarea></div>
+          </div>
+        </fieldset>
+
+        <!-- 3. Payment -->
+        <fieldset class="co-step">
+          <legend><span class="co-num">3</span>Payment</legend>
+          <div class="co-pay">
+            <label class="co-option"><input type="radio" name="payment" value="Pay on delivery" checked><span><strong>Pay on delivery</strong><small>Check or card when the material arrives.</small></span></label>
+            <label class="co-option"><input type="radio" name="payment" value="Invoice for contractors"><span><strong>Invoice for contractors</strong><small>For approved accounts. Our team sets up terms with you.</small></span></label>
+            <label class="co-option"><input type="radio" name="payment" value="Secure card link"><span><strong>Secure card link</strong><small>We text or email a secure payment link after confirming stock.</small></span></label>
+          </div>
+          <p class="co-note">No card details are collected on this page. Stock, delivery and final price are confirmed by our team before anything is charged.</p>
+        </fieldset>
+
+        <div class="co-submit">
+          <button class="btn btn-orange btn-lg" type="submit" data-co-submit>Place Order</button>
+          <p class="form-status" role="status" aria-live="polite" data-co-status></p>
+        </div>
+      </form>
+
+      <!-- Order summary -->
+      <aside class="co-summary" aria-labelledby="co-sum-title">
+        <h2 id="co-sum-title">Order summary</h2>
+        <ul class="co-items" data-co-items></ul>
+        <dl class="co-totals">
+          <div><dt>Subtotal</dt><dd data-co-subtotal>$0.00</dd></div>
+          <div><dt>Delivery</dt><dd>Confirmed by our team</dd></div>
+          <div><dt>Volume pricing</dt><dd>Applied if eligible</dd></div>
+          <div class="co-grand"><dt>Estimated total</dt><dd data-co-total>$0.00</dd></div>
+        </dl>
+        <p class="co-note">Prices as published. Your final total is confirmed the same business day.</p>
+        <a class="co-add-more" href="index.html#products">+ Add more sizes</a>
+      </aside>
+    </div>
+
+    <!-- Confirmation -->
+    <section class="co-done" data-co-done hidden tabindex="-1">
+      <div class="co-done-icon"><svg aria-hidden="true" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></div>
+      <h2>Order received.</h2>
+      <p>Order <strong data-co-ref></strong>. We will call you today to confirm stock, delivery date and final price.</p>
+      <ul class="co-items co-items-static" data-co-done-items></ul>
+      <p class="co-done-total">Estimated total <strong data-co-done-total></strong></p>
+      <a class="btn btn-orange btn-lg" href="index.html">Back to Home</a>
+    </section>
+  </main>
+
+  <footer class="co-footer wrap">
+    <p>© <span data-year>2026</span> Prime Depot Global Enterprises LLC</p>
+    <p>100 Business Street, Hyde Park, MA 02136 · <a href="mailto:contact@primedepotglobal.com">contact@primedepotglobal.com</a></p>
+  </footer>
+
+  <template data-icon-minus><svg aria-hidden="true" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"/></svg></template>
+  <template data-icon-plus><svg aria-hidden="true" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></template>
+  <script src="checkout.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+# Credenciais: nunca no repositório (repo público)
+.htpasswd
+
+# Documentos internos do cliente e notas de design
+Briefing Prime Depot.txt
+OTIMIZAÇÃO HOME*.md
+PRODUCT.md
+DESIGN.md
+.impeccable/
+
+# Sistema / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+node_modules/
+*.log

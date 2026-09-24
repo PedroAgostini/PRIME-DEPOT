@@ -1,0 +1,113 @@
+# =====================================================================
+#  Prime Depot · primedepotglobal.com
+#  .htaccess do AMBIENTE DE TESTE (Apache 2.4)
+#  Antes de publicar em produção, use _deploy/producao/.htaccess
+# =====================================================================
+
+# ---------------------------------------------------------------------
+# 1. Acesso com senha (somente teste)
+#    AuthUserFile precisa do CAMINHO ABSOLUTO do .htpasswd no servidor.
+#    No cPanel/Hostinger o caminho aparece no Gerenciador de Arquivos,
+#    ex.: /home/SEU_USUARIO/public_html/teste/.htpasswd
+# ---------------------------------------------------------------------
+AuthType Basic
+AuthName "Prime Depot - ambiente de teste"
+AuthUserFile /home/SEU_USUARIO/public_html/.htpasswd
+Require valid-user
+
+# ---------------------------------------------------------------------
+# 2. Nada deste ambiente entra no Google
+# ---------------------------------------------------------------------
+<IfModule mod_headers.c>
+  Header always set X-Robots-Tag "noindex, nofollow, noarchive"
+</IfModule>
+
+# ---------------------------------------------------------------------
+# 3. Básico
+# ---------------------------------------------------------------------
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+AddDefaultCharset utf-8
+ErrorDocument 404 /404.html
+# Se o site ficar numa subpasta (ex.: /teste/), troque para: ErrorDocument 404 /teste/404.html
+
+# ---------------------------------------------------------------------
+# 4. HTTPS e URLs limpas
+# ---------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Força HTTPS (comente as 3 linhas abaixo se o teste ainda não tiver SSL)
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Pastas de projeto que não devem ser servidas
+  RewriteRule (^|/)(\.impeccable|_deploy|node_modules)(/|$) - [F,L]
+</IfModule>
+
+# Bloqueia arquivos internos (docs do projeto, senhas, configs)
+<FilesMatch "(^\.|\.(md|log|bak|sql|ini|sh|mjs|psd|ai)$|^(PRODUCT|DESIGN|Briefing))">
+  Require all denied
+</FilesMatch>
+
+# ---------------------------------------------------------------------
+# 5. Segurança
+# ---------------------------------------------------------------------
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https:; form-action 'self' mailto:; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+  Header unset X-Powered-By
+</IfModule>
+ServerSignature Off
+
+# ---------------------------------------------------------------------
+# 6. Tipos de arquivo
+# ---------------------------------------------------------------------
+<IfModule mod_mime.c>
+  AddType image/webp                   .webp
+  AddType font/woff2                   .woff2
+  AddType application/manifest+json    .webmanifest
+  AddType image/x-icon                 .ico
+  AddCharset utf-8 .html .css .js .txt .xml .json .webmanifest
+</IfModule>
+
+# ---------------------------------------------------------------------
+# 7. Compressão
+# ---------------------------------------------------------------------
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml application/javascript application/json application/manifest+json image/svg+xml
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json application/manifest+json image/svg+xml
+</IfModule>
+
+# ---------------------------------------------------------------------
+# 8. Cache
+#    Teste: HTML sem cache e CSS/JS com cache curto,
+#    para o cliente sempre ver a última versão após cada ajuste.
+# ---------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault                         "access plus 1 hour"
+  ExpiresByType text/html                "access plus 0 seconds"
+  ExpiresByType text/css                 "access plus 10 minutes"
+  ExpiresByType application/javascript   "access plus 10 minutes"
+  ExpiresByType image/webp               "access plus 30 days"
+  ExpiresByType image/jpeg               "access plus 30 days"
+  ExpiresByType image/png                "access plus 30 days"
+  ExpiresByType image/x-icon             "access plus 30 days"
+  ExpiresByType font/woff2               "access plus 1 year"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.woff2$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>

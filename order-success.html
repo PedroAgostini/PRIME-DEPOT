@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Order Received | Prime Depot</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f4f5f8">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="icon" href="assets/icons/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="preload" href="assets/fonts/bigshoulders-display-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="checkout.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="co-page os-page">
+  <header class="co-header">
+    <div class="wrap co-header-inner">
+      <a class="brand" href="index.html" aria-label="Prime Depot, home"><img src="assets/logo/logo-color.webp" alt="Prime Depot Building Materials" width="846" height="746"></a>
+      <div class="co-header-actions">
+        <a class="header-phone" href="tel:+16173808387"><svg aria-hidden="true" viewBox="0 0 256 256"><path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z"/></svg>(617) 380-8387</a>
+        <a class="co-back" href="index.html">Back to Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap os-main" id="main">
+    <section class="os-hero" aria-labelledby="os-title">
+      <div class="co-done-icon"><svg aria-hidden="true" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></div>
+      <h1 id="os-title" data-os-title>Order received.</h1>
+      <p class="os-lead">We got your order. Our team will call you today to confirm stock, delivery date and final price.</p>
+
+      <div class="os-ref">
+        <span class="os-ref-label">Your order number</span>
+        <strong class="os-ref-num" data-os-ref>—</strong>
+        <button type="button" class="os-copy" data-os-copy>Copy Number</button>
+        <p class="os-ref-hint">Keep this number. Mention it when you call or email us.</p>
+      </div>
+    </section>
+
+    <section class="os-next" aria-labelledby="os-next-title">
+      <h2 id="os-next-title">What happens next</h2>
+      <ol class="os-steps">
+        <li><span class="co-num">1</span><div><strong>We call you</strong><p>Same business day, to confirm stock, volume pricing and the final total.</p></div></li>
+        <li><span class="co-num">2</span><div><strong>We schedule delivery</strong><p>Straight to your job site or lumber yard across Massachusetts.</p></div></li>
+        <li><span class="co-num">3</span><div><strong>You pay your way</strong><p data-os-pay-step>Nothing is charged until our team confirms your order.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="os-details" data-os-details hidden aria-labelledby="os-details-title">
+      <h2 id="os-details-title">Order details</h2>
+      <div class="os-grid">
+        <div class="os-card">
+          <h3>Items</h3>
+          <ul class="co-items co-items-static" data-os-items></ul>
+          <p class="os-total">Estimated total <strong data-os-total></strong></p>
+        </div>
+        <div class="os-card">
+          <h3>Delivery</h3>
+          <dl class="os-dl">
+            <div><dt>Deliver to</dt><dd data-os-address></dd></div>
+            <div><dt>Preferred date</dt><dd data-os-date></dd></div>
+            <div><dt>Payment</dt><dd data-os-payment></dd></div>
+            <div><dt>Contact</dt><dd data-os-contact></dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <div class="os-actions">
+      <button type="button" class="btn btn-ghost btn-lg" data-os-print>Print Order</button>
+      <a class="btn btn-orange btn-lg" href="index.html">Back to Home</a>
+      <a class="btn btn-ghost btn-lg" href="tel:+16173808387">Call (617) 380-8387</a>
+    </div>
+  </main>
+
+  <footer class="co-footer wrap">
+    <p>© <span data-year>2026</span> Prime Depot Global Enterprises LLC</p>
+    <p>100 Business Street, Hyde Park, MA 02136 · <a href="mailto:contact@primedepotglobal.com">contact@primedepotglobal.com</a></p>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+  <script src="success.js" defer></script>
+</body>
+</html>

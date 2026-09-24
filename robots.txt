@@ -1,0 +1,4 @@
+# Ambiente de TESTE: nenhum robô deve indexar este endereço.
+# Na publicação final, substitua por _deploy/producao/robots.txt
+User-agent: *
+Disallow: /

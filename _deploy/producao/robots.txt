@@ -1,0 +1,7 @@
+# Prime Depot Global Enterprises LLC · primedepotglobal.com
+User-agent: *
+Allow: /
+Disallow: /checkout.html
+Disallow: /order-success.html
+
+Sitemap: https://primedepotglobal.com/sitemap.xml

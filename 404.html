@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The server can show this page at any path (/old/link), so assets resolve from the site root.
+       Opened straight from disk (file://) it keeps normal relative paths.
+       If the site lives in a subfolder (e.g. /teste/), change to <base href="/teste/">. -->
+  <base href="/">
+  <script>if (location.protocol === 'file:') document.querySelector('base').href = './';</script>
+  <title>Page Not Found | Prime Depot</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f4f5f8">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="icon" href="assets/icons/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/bigshoulders-display-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="checkout.css">
+  <style>
+    .nf-code { font: 900 clamp(6rem, 4rem + 12vw, 11rem)/.8 var(--stencil); color: var(--co-accent-text, #b04d08); letter-spacing: .02em; }
+    .nf .os-lead { max-width: 34ch; }
+    .nf-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 1.25rem; margin-top: .5rem; }
+    .nf-links a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: inherit; text-underline-offset: .25em; }
+  </style>
+</head>
+<body class="co-page os-page">
+  <header class="co-header">
+    <div class="wrap co-header-inner">
+      <a class="brand" href="index.html" aria-label="Prime Depot, home"><img src="assets/logo/logo-color.webp" alt="Prime Depot Building Materials" width="846" height="746"></a>
+      <div class="co-header-actions">
+        <a class="co-back" href="index.html">Back to Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap os-main" id="main">
+    <section class="os-hero nf" aria-labelledby="nf-title">
+      <p class="nf-code" aria-hidden="true">404</p>
+      <h1 id="nf-title">This page is not in stock.</h1>
+      <p class="os-lead">The link may be old or mistyped. Our boards, sheets and prices are all on the home page.</p>
+      <div class="os-actions">
+        <a class="btn btn-orange btn-lg" href="index.html#products">See Sizes and Prices</a>
+        <a class="btn btn-ghost btn-lg" href="tel:+16173808387">Call (617) 380-8387</a>
+      </div>
+      <nav class="nf-links" aria-label="Popular pages">
+        <a href="index.html">Home</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#quote">Request a Quote</a>
+      </nav>
+    </section>
+  </main>
+
+  <footer class="co-footer wrap">
+    <p>© 2026 Prime Depot Global Enterprises LLC</p>
+    <p>100 Business Street, Hyde Park, MA 02136 · <a href="mailto:contact@primedepotglobal.com">contact@primedepotglobal.com</a></p>
+  </footer>
+</body>
+</html>
