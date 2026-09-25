@@ -1740,3 +1740,17 @@ html { scroll-padding-top: 98px; }
   .footer-base p { text-wrap: balance; max-width: 30ch; }
   .footer-base .credit { margin-top: -.25rem; }
 }
+
+/* Header: solid white from the start (not transparent over the hero).
+   At the top it is a white panel aligned with the hero slab; once scrolled it keeps the same white. */
+.site-header::before {
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+  inset: 0 var(--slab-gap);
+  background: #fff;
+  border-radius: var(--r-slab) var(--r-slab) var(--r-card) var(--r-card);
+  box-shadow: 0 1px 0 var(--line), 0 10px 30px -22px rgba(22,29,51,.35);
+  transition: opacity .3s;
+}
+.site-header.is-scrolled { background: #fff; }
+.site-header.is-scrolled::before { opacity: 0; }
+@media (max-width: 900px) { .site-header.is-scrolled { background: #fff; } }
